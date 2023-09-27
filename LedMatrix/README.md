@@ -106,3 +106,4 @@ void loop() {
 ```
 
 ## Демонстрация работы
+https://github.com/svyatoslavlipatov/IoT/assets/92099105/3021a7b0-5825-4446-b091-013a394ee1b7
