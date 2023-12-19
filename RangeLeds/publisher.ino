@@ -4,8 +4,8 @@
 const int trigPin = 5;  // Передатчик D1
 const int echoPin = 4;  // Приемник D2
 
-const char* wifi_ssid = "lippka";
-const char* wifi_password = "lipa25";
+const char* wifi_ssid = "Lipa";
+const char* wifi_password = "lipay2547";
 
 const char* mqttServer = "broker.emqx.io";
 const int mqttPort = 1883;
@@ -47,7 +47,7 @@ void measureDistanceAndPublish() {
   float distanceCm = duration * 0.0343 / 2.0;
 
   if (client.publish("esp/sensor", String(distanceCm).c_str())) {
-    Serial.println("Сообщение успешно отправлено");
+    Serial.println("Сообщение успешно отправлено: " + String(distanceCm));
   } else {
     Serial.println("Не удалось отправить сообщение");
   }
