@@ -80,10 +80,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   int distance = atoi((char*)payload);
   Serial.println("Расстояние: " + String(distance));
+
+  distanceLeds(distance);
 }
 
 void distanceLeds(int distance) {
-  Serial.println(distance);
   if (distance <= 5) {
     Serial.print("Все ребята в строю!");
     digitalWrite(ledPin1, HIGH);
