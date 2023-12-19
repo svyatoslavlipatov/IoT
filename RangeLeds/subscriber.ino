@@ -6,8 +6,8 @@ const int ledPin2 = 4; // D2
 const int ledPin3 = 0; // D3
 const int ledPin4 = 2; // D4
 
-const char* ssid = "EgorKreed"; 
-const char* password = "ek5858585";  
+const char* ssid = "1Redmi"; 
+const char* password = "1223334444";  
 const char* mqttServer = "broker.emqx.io";
 const int mqttPort = 1883;
 
@@ -73,44 +73,48 @@ void reconnect() {
 
 void callback(char* topic, byte* payload, unsigned int length) {
   Serial.println("Получено сообщение в теме: " + String(topic));
-  Serial.print("Сообщение:");
+  Serial.print("Переданное сообщение:");
   for (int i = 0; i < length; i++) {
     Serial.print((char)payload[i]);
   }
-
+  Serial.println();
   int distance = atoi((char*)payload);
   Serial.println("Расстояние: " + String(distance));
-
   distanceLeds(distance);
 }
 
 void distanceLeds(int distance) {
   if (distance <= 5) {
-    Serial.print("Все ребята в строю!");
+    Serial.println("Все ребята в строю!");
+    Serial.println();
     digitalWrite(ledPin1, HIGH);
     digitalWrite(ledPin2, HIGH);
     digitalWrite(ledPin3, HIGH);
     digitalWrite(ledPin4, HIGH);
   } else if (distance <= 10 && distance >= 5) {
-    Serial.print("Минус 1");
+    Serial.println("Минус 1");
+    Serial.println();
     digitalWrite(ledPin1, HIGH);
     digitalWrite(ledPin2, HIGH);
     digitalWrite(ledPin3, HIGH);
     digitalWrite(ledPin4, LOW);
   } else if (distance <= 15 && distance >= 10) {
-    Serial.print("Второй пошел");
+    Serial.println("Второй пошел");
+    Serial.println();
     digitalWrite(ledPin1, HIGH);
     digitalWrite(ledPin2, HIGH);
     digitalWrite(ledPin3, LOW);
     digitalWrite(ledPin4, LOW);
   } else if (distance <= 20 && distance >= 15) {
-    Serial.print("1 в поле воин");
+    Serial.println("1 в поле воин");
+    Serial.println();
     digitalWrite(ledPin1, HIGH);
     digitalWrite(ledPin2, LOW);
     digitalWrite(ledPin3, LOW);
     digitalWrite(ledPin4, LOW);
   } else if (distance >= 20) {
-    Serial.print("не воин...");
+    Serial.println("не воин...");
+    Serial.println();
     digitalWrite(ledPin1, LOW);
     digitalWrite(ledPin2, LOW);
     digitalWrite(ledPin3, LOW);
